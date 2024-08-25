@@ -91,6 +91,32 @@ namespace DesignPatterns
             return product.color == _color;
         }
     }
+    public class SizeCondition : ICondition<Product>
+    {
+        private Size _size;
+        public SizeCondition(Size size)
+        {
+            _size = size;
+        }
+        public bool isMatched(Product product)
+        {
+            return product.size == _size;
+        }
+    }
+    public class AndCondition<T> : ICondition<T>
+    {
+        private ICondition<T> _first,_second;
+        public AndCondition(ICondition<T> first, ICondition<T> second)
+        {
+            _first = first;
+            _second = second;
+        }
+        public bool isMatched(T t)
+        {
+            return _first.isMatched(t)&&_second.isMatched(t);
+        }
+
+    }
     public class Filter : IFilter<Product>
     {
         public IEnumerable<Product> FilterItem(IEnumerable<Product> items, ICondition<Product> condition)
@@ -115,17 +141,23 @@ namespace DesignPatterns
             //Process.Start(fileName);
 
             //Open/Closed Principle
-            Product p1 = new Product("Bottle",Color.Blue,Size.Medium);
+            Product p1 = new Product("Bottle",Color.Blue,Size.Small);
             Product p2 = new Product("Pen",Color.Red,Size.Small);
             Product p3 = new Product("Grass",Color.Green,Size.Large);
-
-            Product[] products = { p1, p2, p3 };
-
+            Product p4 = new Product("Mobile", Color.Green, Size.Medium);
+            Product p5 = new Product("Jacket", Color.Blue, Size.Small);
+            Product p6 = new Product("Purse", Color.Red, Size.Large);
+            Product[] products = { p1, p2, p3, p4, p5, p6};
             Filter filter = new Filter();
-            foreach(var item in filter.FilterItem(products, new ColorCondition(Color.Blue)))
+            foreach(var item in filter.FilterItem(products, new AndCondition<Product>
+                (new ColorCondition(Color.Red),
+                new SizeCondition(Size.Large))))
             {
-                Console.WriteLine($"~{item.Name} is blue.");
+                 Console.WriteLine($"~{item.Name}");
+
             }
+
+            
 
             Console.ReadLine();
         }
