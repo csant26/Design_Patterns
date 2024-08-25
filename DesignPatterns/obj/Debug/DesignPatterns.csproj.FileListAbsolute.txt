@@ -5,3 +5,6 @@ E:\CODING\C# Projects\DesignPatterns\DesignPatterns\obj\Debug\DesignPatterns.csp
 E:\CODING\C# Projects\DesignPatterns\DesignPatterns\obj\Debug\DesignPatterns.csproj.CoreCompileInputs.cache
 E:\CODING\C# Projects\DesignPatterns\DesignPatterns\obj\Debug\DesignPatterns.exe
 E:\CODING\C# Projects\DesignPatterns\DesignPatterns\obj\Debug\DesignPatterns.pdb
+E:\CODING\C# Projects\DesignPatterns\DesignPatterns\bin\Debug\System.ValueTuple.dll
+E:\CODING\C# Projects\DesignPatterns\DesignPatterns\bin\Debug\System.ValueTuple.xml
+E:\CODING\C# Projects\DesignPatterns\DesignPatterns\obj\Debug\DesignPa.778FCB8E.Up2Date
